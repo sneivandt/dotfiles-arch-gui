@@ -9,7 +9,7 @@ then
   unset f
 fi
 
-if [[ -n $(command -v i3) ]]
+if [[ -n $(command -v xmonad) ]]
 then
 
   # X preferences
@@ -18,15 +18,7 @@ then
   xset -dpms
   xset s noblank
 
-  # i3-gaps
-  rm ~/.i3/config
-  cat ~/.i3/config-base ~/.i3/config-with-gaps >> ~/.i3/config
-  if [[ $(i3 -C) ]]
-  then
-    rm ~/.i3/config
-    cat ~/.i3/config-base ~/.i3/config-without-gaps >> ~/.i3/config
-    exec i3
-  else
-    exec i3
-  fi
+  # xmonad
+  ~/.xmonad/autostart.sh
+  xmonad
 fi
