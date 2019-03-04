@@ -8,5 +8,3 @@ do
     exit
   fi
 done
-
-i3-nagbar -m "Could not find an editor."

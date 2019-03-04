@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for browser in chromium-dev chromium firefox
+for browser in chromium-dev chromium
 do
   if [[ -n $(command -v $browser) ]]
   then
@@ -8,5 +8,3 @@ do
     exit
   fi
 done
-
-i3-nagbar -m "Could not find a browser."

@@ -1,17 +1,22 @@
 Config {
 
-  -- appearance
-      font     = "xft:monospace:size=9:bold:antialias=true"
-    , bgColor  = "black"
-    , fgColor  = "#d1d1d1"
-    , position = Top
+  -- Appearance
+      font            = "xft:monospace:pixelsize=11:antialias=true:hinting=true"
+      additionalFonts = [ "xft:Font Awesome 5 Free:pixelsize=11:antialias=true:hinting=true"
+                        , "xft:Font Awesome 5 Free Solid:pixelsize=11:antialias=true:hinting=true"
+                        , "xft:Font Awesome 5 Brands:pixelsize=11:antialias=true:hinting=true"
+                        ]
+    , bgColor         = "black"
+    , fgColor         = "#d1d1d1"
+    , alpha           = 150
+    , position        = Top
 
-  -- layout
+  -- Layout
     , sepChar  = "%"
     , alignSep = "}{"
-    , template = " %StdinReader%}{%msft%  %date% "
+    , template = " %StdinReader%}{%playing%  %msft%  %uname%  %volume%  %date%  %time%  "
 
-  -- general
+  -- General
     , lowerOnStart     = True
     , hideOnStart      = False
     , allDesktops      = True
@@ -19,10 +24,14 @@ Config {
     , pickBroadest     = False
     , persistent       = True
 
-  -- commands
+  -- Commands
     , commands =
-      [ Run Date "<fc=#ABABAB>%F %T</fc>" "date" 10
-      , Run Com "bash" ["-c", "~/.xmonad/scripts/stock.py msft MSFT"] "msft" 60
+      [ Run Date "<fn=2></fn> %H:%M"                                              "time"    10
+      , Run Date "<fn=2></fn> %a %b %m"                                       "date"    10
+      , Run Com  "bash" ["-c", "~/.xmonad/scripts/playing.sh '<fn=3></fn>'"]      "playing" 60
+      , Run Com  "bash" ["-c", "~/.xmonad/scripts/uname.sh   '<fn=3></fn>'"]      "uname"   60
+      , Run Com  "bash" ["-c", "~/.xmonad/scripts/volume.sh  '<fn=2></fn>'"]      "volume"  60
+      , Run Com  "bash" ["-c", "~/.xmonad/scripts/stock.py   '<fn=3></fn>' msft"] "msft"    60
       , Run StdinReader
       ]
 }
