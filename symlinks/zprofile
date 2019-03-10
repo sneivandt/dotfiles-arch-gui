@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Start X Windows
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 && -n $(command -v xmonad) ]] && exec startx

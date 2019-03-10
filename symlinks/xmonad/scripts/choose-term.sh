@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 for terminal in urxvt urxvt256c uxterm xterm gnome-terminal
 do

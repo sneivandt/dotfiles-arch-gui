@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -n $(command -v playerctl) && -n $(command -v amixer) ]]
 then

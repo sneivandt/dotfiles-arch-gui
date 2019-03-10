@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 player_status=$(playerctl status 2>/dev/null)
 if [[ $? -eq 0 ]] && playerctl metadata 'mpris:trackid' | grep -wq "spotify"
