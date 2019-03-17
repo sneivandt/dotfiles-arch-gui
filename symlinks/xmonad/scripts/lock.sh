@@ -12,7 +12,7 @@ then
   amixer -q set Master mute 2>/dev/null
 
   # Lock and wait
-  env XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_SHOW_HOSTNAME=1 XSECURELOCK_SHOW_USERNAME=1 xsecurelock
+  slock
   wait
 
   # Resume player

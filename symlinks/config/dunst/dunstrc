@@ -1,13 +1,24 @@
 [global]
-    alignment            = left
-    background           = "#607d8b"
-    font                 = Source Code Pro 9
-    foreground           = "#d1d1d1"
     format               = "%s\n%b"
+    font                 = Source Code Pro 9
+    alignment            = left
+    line_height          = 11
     indicate_hidden      = yes
-    line_height          = 0
-    padding              = 1
-    horizontal_padding   = 2
     startup_notification = false
-    timeout              = 5
-    transparency         = 0
+    padding              = 0
+    horizontal_padding   = 5
+
+[urgency_low]
+    background = "#3465a4"
+    foreground = "#d0d0d0"
+    timeout    = 10
+
+[urgency_normal]
+    background = "#3465a4"
+    foreground = "#d0d0d0"
+    timeout    = 10
+
+[urgency_critical]
+    background = "#3465a4"
+    foreground = "#d0d0d0"
+    timeout    = 10

@@ -1,12 +1,16 @@
 Config {
 -- Apearance -------------------------------------------------------------- {{{
-      font            = "xft:Source Code Pro:pixelsize=11:antialias=true:hinting=true"
+      font            = "xft:Source Code Pro:pixelsize=11:antialias=true:hinting=true\
+                        \,Font Awesome 5 Free Solid:pixelsize=11:antialias=true:hinting=true\
+                        \,Noto Sans CJK CH:pixelsize=11:antialias=true:hinting=true\
+                        \,Noto Sans CJK JP:pixelsize=11:antialias=true:hinting=true\
+                        \,Noto Sans CJK KR:pixelsize=11:antialias=true:hinting=true"
     , additionalFonts = [ "xft:Font Awesome 5 Free:pixelsize=11:antialias=true:hinting=true"
                         , "xft:Font Awesome 5 Free Solid:pixelsize=11:antialias=true:hinting=true"
                         , "xft:Font Awesome 5 Brands:pixelsize=11:antialias=true:hinting=true"
                         ]
-    , bgColor         = "black"
-    , fgColor         = "#d1d1d1"
+    , bgColor         = "#121212"
+    , fgColor         = "#d0d0d0"
     , alpha           = 150
     , position        = Top
 -- }}}

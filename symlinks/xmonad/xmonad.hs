@@ -37,16 +37,15 @@ myLayoutHook = avoidStruts
              $ gaps [(U,4),(D,4),(L,4),(R,4)]
              $ mkToggle (FULL ?? EOT) $ lDef ||| lGrd ||| lFul
                where
-                 space = 4
-                 inc   = 1/100
-                 grto  = toRational $ 2/(1 + sqrt 5)
-                 lDef  = named "Default" $ spacing space $ Tall 1 inc grto
-                 lGrd  = named "Grid"    $ spacing space $ Grid
-                 lFul  = named "Full"    $ Full
-
+                 spc  = 4
+                 inc  = 1/100
+                 grto = toRational $ 2/(1 + sqrt 5)
+                 lDef = named "Main" $ spacing spc $ Tall 1 inc grto
+                 lGrd = named "Grid" $ spacing spc $ Grid
+                 lFul = named "Full" $ Full
 -- }}}
 -- Key Bindings ----------------------------------------------------------- {{{
-dmenuArgs = "-fn 'xft:monospace:pixelsize=11:antialias=true:hinting=true' -nb '#000000' -sb '#607d8b' -nf '#d1d1d1' -sf '#d1d1d1'"
+dmenuArgs = "-fn 'xft:monospace:pixelsize=11:antialias=true:hinting=true' -nb '#121212' -sb '#3465a4' -nf '#d0d0d0' -sf '#d0d0d0'"
 myKeys =
   [
     -- Launcher
@@ -64,6 +63,7 @@ myKeys =
   , ("M-o",         spawn "~/.xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
   , ("M-S-o",       spawn ("item=$(echo -e 'amazon.com/video\\ntwitch.tv/following/live\\nnetflix.com\\nyoutube.com' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
+  , ("M-S-e",       spawn ("item=$(cat ~/.xmonad/scripts/emoji-data.txt | awk -F'[;()]' '/^[^#]/ {print $6 $7}' | dmenu -i -l 16 -p 'Emoji' " ++ dmenuArgs ++ ") && echo $(echo $item | awk '{print $1}') | xclip -sel clip && notify-send 'Copied to clipboard'"))
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{
@@ -71,11 +71,11 @@ myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
 myWsBar     = "xmobar ~/.xmonad/xmobar.hs"
 wsPP        = xmobarPP
               { ppOrder   = \(ws:l:t:r) -> ws:l:t:r
-              , ppTitle   = \t -> shorten 64 t
-              , ppLayout  = xmobarColor "#d1d1d1" ""
-              , ppCurrent = xmobarColor "#d1d1d1" ""
-              , ppHidden  = xmobarColor "#606060" ""
-              , ppSep     = xmobarColor "#606060" "" " : "
+              , ppTitle   = \t -> shorten 256 t
+              , ppLayout  = xmobarColor "#d0d0d0" ""
+              , ppCurrent = xmobarColor "#d0d0d0" ""
+              , ppHidden  = xmobarColor "#2E3436" ""
+              , ppSep     = xmobarColor "#d0d0d0" "" " \xf101 "
               , ppWsSep   = " "
               }
 -- }}}
