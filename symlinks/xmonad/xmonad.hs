@@ -63,7 +63,6 @@ myKeys =
   , ("M-o",         spawn "~/.xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
   , ("M-S-o",       spawn ("item=$(echo -e 'amazon.com/video\\ntwitch.tv/following/live\\nnetflix.com\\nyoutube.com' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
-  , ("M-S-e",       spawn ("item=$(cat ~/.xmonad/scripts/emoji-data.txt | awk -F'[;()]' '/^[^#]/ {print $6 $7}' | dmenu -i -l 16 -p 'Emoji' " ++ dmenuArgs ++ ") && echo $(echo $item | awk '{print $1}') | xclip -sel clip && notify-send 'Copied to clipboard'"))
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{
@@ -71,11 +70,10 @@ myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
 myWsBar     = "xmobar ~/.xmonad/xmobar.hs"
 wsPP        = xmobarPP
               { ppOrder   = \(ws:l:t:r) -> ws:l:t:r
-              , ppTitle   = \t -> shorten 256 t
-              , ppLayout  = xmobarColor "#d0d0d0" ""
-              , ppCurrent = xmobarColor "#d0d0d0" ""
-              , ppHidden  = xmobarColor "#2E3436" ""
-              , ppSep     = xmobarColor "#d0d0d0" "" " \xf101 "
+              , ppTitle   = \t -> shorten 64 t
+              , ppCurrent = \_ -> "<fn=0>\xf111</fn>"
+              , ppHidden  = \_ -> "<fn=1>\xf111</fn>"
+              , ppSep     = xmobarColor "#283436" "" " \xf105 "
               , ppWsSep   = " "
               }
 -- }}}
