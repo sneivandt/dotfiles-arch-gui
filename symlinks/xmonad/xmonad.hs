@@ -3,11 +3,11 @@ import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
-import qualified XMonad.Hooks.EwmhDesktops as E
+import qualified XMonad.Hooks.EwmhDesktops as ED
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Gaps
-import XMonad.Layout.Grid
+import qualified XMonad.Layout.GridVariants as GV
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Named
@@ -27,7 +27,7 @@ main = do
     , focusedBorderColor = "#607d8b"
     , layoutHook         = myLayoutHook
     , manageHook         = fullscreenManageHook <+> manageDocks
-    , handleEventHook    = fullscreenEventHook <+> docksEventHook <+> E.fullscreenEventHook
+    , handleEventHook    = fullscreenEventHook <+> docksEventHook <+> ED.fullscreenEventHook
     , logHook            = myLogHook wsBar
     } `additionalKeysP` myKeys
 -- }}}
@@ -35,14 +35,14 @@ main = do
 myLayoutHook = avoidStruts
              $ smartBorders
              $ gaps [(U,4),(D,4),(L,4),(R,4)]
-             $ mkToggle (FULL ?? EOT) $ lDef ||| lGrd ||| lFul
+             $ mkToggle (FULL ?? EOT) $ lDef ||| lGrd
                where
                  spc  = 4
                  inc  = 1/100
+                 asp  = 1920/1080
                  grto = toRational $ 2/(1 + sqrt 5)
                  lDef = named "Main" $ spacing spc $ Tall 1 inc grto
-                 lGrd = named "Grid" $ spacing spc $ Grid
-                 lFul = named "Full" $ Full
+                 lGrd = named "Grid" $ spacing spc $ GV.TallGrid 0 1 (1/2) asp inc
 -- }}}
 -- Key Bindings ----------------------------------------------------------- {{{
 dmenuArgs = "-fn 'xft:monospace:pixelsize=11:antialias=true:hinting=true' -nb '#121212' -sb '#3465a4' -nf '#d0d0d0' -sf '#d0d0d0'"
