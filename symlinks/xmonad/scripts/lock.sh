@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -n $(command -v playerctl) && -n $(command -v amixer) ]]
+if [[ -n $(command -vp playerctl) && -n $(command -vp amixer) ]]
 then
 
   # Pause player

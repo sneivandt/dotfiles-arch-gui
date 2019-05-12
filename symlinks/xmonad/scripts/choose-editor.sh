@@ -2,7 +2,7 @@
 
 for editor in code-insiders code gvim
 do
-  if [[ -n $(command -v $editor) ]]
+  if [[ -n $(command -vp $editor) ]]
   then
     exec $editor
     exit

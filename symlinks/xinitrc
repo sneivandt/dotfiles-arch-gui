@@ -9,7 +9,7 @@ then
   unset f
 fi
 
-if [[ -n $(command -v xmonad) ]]
+if [[ -n $(command -vp xmonad) ]]
 then
 
   # X preferences

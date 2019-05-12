@@ -2,7 +2,7 @@
 
 for browser in chromium-dev chromium
 do
-  if [[ -n $(command -v $browser) ]]
+  if [[ -n $(command -vp $browser) ]]
   then
     if [[ -z $1 ]]
     then
