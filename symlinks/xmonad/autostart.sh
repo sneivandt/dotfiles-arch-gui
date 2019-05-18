@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 feh --randomize --bg-fill ~/.wallpaper/* &
 compton &

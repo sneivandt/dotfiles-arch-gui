@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 for browser in chromium-dev chromium
 do
-  if [[ -n $(command -vp $browser) ]]
+  if [ -n "$(command -vp $browser)" ]
   then
-    if [[ -z $1 ]]
+    if [ -z "$1" ]
     then
       exec $browser
     else

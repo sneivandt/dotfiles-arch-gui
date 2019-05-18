@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-if [[ -n $(command -vp playerctl) && -n $(command -vp amixer) ]]
+if [ -n "$(command -vp playerctl)" ] && [ -n "$(command -vp amixer)" ]
 then
 
   # Pause player
@@ -16,13 +16,13 @@ then
   wait
 
   # Resume player
-  if [[ $STATUS = "Playing" ]]
+  if [ "$STATUS" = "Playing" ]
   then
     playerctl play
   fi
 
   # Unmute
-  if [[ $SOUND == "[on]" ]]
+  if [ "$SOUND" = "[on]" ]
   then
     amixer -q set Master unmute 2>/dev/null
   fi

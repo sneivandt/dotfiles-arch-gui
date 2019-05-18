@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 for editor in code-insiders code gvim
 do
-  if [[ -n $(command -vp $editor) ]]
+  if [ -n "$(command -vp $editor)" ]
   then
     exec $editor
     exit

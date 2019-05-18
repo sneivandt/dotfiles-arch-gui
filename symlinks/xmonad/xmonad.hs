@@ -4,6 +4,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import qualified XMonad.Hooks.EwmhDesktops as ED
+import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Gaps
@@ -26,7 +27,7 @@ main = do
     , normalBorderColor  = "#263238"
     , focusedBorderColor = "#607d8b"
     , layoutHook         = myLayoutHook
-    , manageHook         = fullscreenManageHook <+> manageDocks
+    , manageHook         = fullscreenManageHook <+> insertPosition Below Newer <+> manageDocks
     , handleEventHook    = fullscreenEventHook <+> docksEventHook <+> ED.fullscreenEventHook
     , logHook            = myLogHook wsBar
     } `additionalKeysP` myKeys
@@ -37,12 +38,13 @@ myLayoutHook = avoidStruts
              $ gaps [(U,4),(D,4),(L,4),(R,4)]
              $ mkToggle (FULL ?? EOT) $ lDef ||| lGrd
                where
-                 spc  = 4
+                 gap  = 4
+                 spc  = spacingRaw True (Border gap gap gap gap) True (Border gap gap gap gap) True
                  inc  = 1/100
                  asp  = 1920/1080
                  grto = toRational $ 2/(1 + sqrt 5)
-                 lDef = named "Main" $ spacing spc $ Tall 1 inc grto
-                 lGrd = named "Grid" $ spacing spc $ GV.TallGrid 0 1 (1/2) asp inc
+                 lDef = named "Main" $ spc $ Tall 1 inc grto
+                 lGrd = named "Grid" $ spc $ GV.TallGrid 0 1 (1/2) asp inc
 -- }}}
 -- Key Bindings ----------------------------------------------------------- {{{
 dmenuArgs = "-fn 'xft:monospace:pixelsize=11:antialias=true:hinting=true' -nb '#121212' -sb '#3465a4' -nf '#d0d0d0' -sf '#d0d0d0'"
@@ -62,7 +64,7 @@ myKeys =
   , ("M-<Return>",  spawn "~/.xmonad/scripts/choose-term.sh")
   , ("M-o",         spawn "~/.xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
-  , ("M-S-o",       spawn ("item=$(echo -e 'amazon.com/video\\ntwitch.tv/following/live\\nnetflix.com\\nyoutube.com' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
+  , ("M-S-o",       spawn ("item=$(echo 'amazon.com/video\\ntwitch.tv/following/live\\nnetflix.com\\nyoutube.com' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{
