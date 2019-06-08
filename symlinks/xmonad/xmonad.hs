@@ -4,7 +4,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import qualified XMonad.Hooks.EwmhDesktops as ED
-import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Gaps
@@ -27,7 +26,7 @@ main = do
     , normalBorderColor  = "#263238"
     , focusedBorderColor = "#607d8b"
     , layoutHook         = myLayoutHook
-    , manageHook         = fullscreenManageHook <+> insertPosition Below Newer <+> manageDocks
+    , manageHook         = fullscreenManageHook <+> manageDocks
     , handleEventHook    = fullscreenEventHook <+> docksEventHook <+> ED.fullscreenEventHook
     , logHook            = myLogHook wsBar
     } `additionalKeysP` myKeys
