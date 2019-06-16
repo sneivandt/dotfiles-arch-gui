@@ -17,7 +17,7 @@ Config {
 -- Layout ----------------------------------------------------------------- {{{
     , sepChar  = "%"
     , alignSep = "}{"
-    , template = " %StdinReader%}{%playing%  %msft%  %uname%  %volume%  %date%  %time% "
+    , template = " %StdinReader%}{%playing%  %volume%  %date%  %time% "
 -- }}}
 -- General ---------------------------------------------------------------- {{{
     , lowerOnStart     = True
@@ -29,12 +29,10 @@ Config {
 -- }}}
 -- Commands --------------------------------------------------------------- {{{
     , commands =
-      [ Run Date "<fn=2></fn> %H:%M"                                              "time"    10
-      , Run Date "<fn=2></fn> %a %b %d"                                           "date"    10
-      , Run Com  "bash" ["-c", "~/.xmonad/scripts/playing.sh '<fn=3></fn>'"]      "playing" 60
-      , Run Com  "bash" ["-c", "~/.xmonad/scripts/uname.sh   '<fn=3></fn>'"]      "uname"   60
-      , Run Com  "bash" ["-c", "~/.xmonad/scripts/volume.sh  '<fn=2></fn>'"]      "volume"  60
-      , Run Com  "bash" ["-c", "~/.xmonad/scripts/stock.py   '<fn=3></fn>' msft"] "msft"    60
+      [ Run Date "<fn=2></fn> %H:%M"                                         "time"    10
+      , Run Date "<fn=2></fn> %a %b %d"                                      "date"    10
+      , Run Com  "bash" ["-c", "~/.xmonad/scripts/playing.sh '<fn=3></fn>'"] "playing" 60
+      , Run Com  "bash" ["-c", "~/.xmonad/scripts/volume.sh  '<fn=2></fn>'"] "volume"  60
       , Run StdinReader
       ]
 -- }}}
