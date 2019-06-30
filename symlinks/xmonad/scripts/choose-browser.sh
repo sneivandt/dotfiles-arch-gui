@@ -6,9 +6,9 @@ do
   then
     if [ -z "$1" ]
     then
-      exec $browser
+      $browser
     else
-      exec $browser --app="https://$1"
+      $browser --app="https://$1"
     fi
     exit
   fi

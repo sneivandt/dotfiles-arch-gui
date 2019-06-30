@@ -4,7 +4,7 @@ if [ -n "$(command -vp playerctl)" ] && [ -n "$(command -vp amixer)" ]
 then
 
   # Pause player
-  STATUS=$(playerctl status)
+  STATUS=$(playerctl status 2>/dev/null)
   playerctl pause
 
   # Mute
@@ -18,7 +18,7 @@ then
   # Resume player
   if [ "$STATUS" = "Playing" ]
   then
-    playerctl play
+    playerctl play 2>/dev/null
   fi
 
   # Unmute
@@ -27,9 +27,16 @@ then
     amixer -q set Master unmute 2>/dev/null
   fi
 
-else
+elif [ -n "$(command -vp slock)" ]
+then
 
-  # Simple lock fallback
+  # Fallback 1
+  slock
+
+elif [ -n "$(command -vp xsecurelock)" ]
+then
+
+  # Fallback 2
   xsecurelock
 
 fi
