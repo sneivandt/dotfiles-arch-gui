@@ -8,7 +8,17 @@ do
     then
       $browser
     else
-      $browser --app="https://$1"
+      case $@ in
+        "<iframe "*)
+          $browser --app="$(echo "$@" | grep -Po '.* src="\K[^ "'']*')"
+          ;;
+        "https://"*)
+          $browser --app="$@"
+          ;;
+        *)
+          $browser --app="https://$@"
+          ;;
+      esac
     fi
     exit
   fi
