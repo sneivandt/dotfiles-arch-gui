@@ -63,7 +63,7 @@ myKeys =
   , ("M-<Return>",  spawn "~/.xmonad/scripts/choose-term.sh")
   , ("M-o",         spawn "~/.xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
-  , ("M-S-o",       spawn ("item=$(echo 'amazon.com/video\\ntwitch.tv/following/live\\nnetflix.com\\nyoutube.com' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
+  , ("M-S-o",       spawn ("item=$(echo 'amazon\ntwitch\nnetflix\nyoutube' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{

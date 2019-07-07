@@ -8,15 +8,27 @@ do
     then
       $browser
     else
-      case $@ in
+      case $(echo "$@" | tr '[:upper:]' '[:lower:]') in
+        "amazon")
+          $browser --app="https://amazon.com/video"
+          ;;
+        "netflix")
+          $browser --app="https://netflix.com"
+          ;;
+        "twitch")
+          $browser --app="https://twitch.tv/following/live"
+          ;;
+        "youtube")
+          $browser --app="http://youtube.com/feed/subscriptions"
+          ;;
         "<iframe "*)
-          $browser --app="$(echo "$@" | grep -Po '.* src="\K[^ "'']*')"
+          $browser --app="$(echo "$*" | grep -Po '.* src="\K[^ "'']*')"
           ;;
         "https://"*)
-          $browser --app="$@"
+          $browser --app="$*"
           ;;
         *)
-          $browser --app="https://$@"
+          $browser --app="https://$*"
           ;;
       esac
     fi

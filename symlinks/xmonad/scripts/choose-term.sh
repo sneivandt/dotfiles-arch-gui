@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for terminal in urxvt urxvt256c uxterm xterm gnome-terminal
+for terminal in xterm urxvt urxvt256c uxterm
 do
   if [ -n "$(command -vp $terminal)" ]
   then

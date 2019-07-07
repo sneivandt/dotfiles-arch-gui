@@ -1,13 +1,4 @@
 #!/usr/bin/env zsh
 
-# Global profile
-[[ -f /etc/zsh/zprofile ]] && . /etc/zsh/zprofile
-
-# Profile
-. ~/.shell/profile
-
-# GUI Profile
-[[ -f ~/.shell/profile-gui ]] && . ~/.shell/profile-gui
-
 # Start X Windows
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 && -n $(command -vp xmonad) ]] && exec startx
