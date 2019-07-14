@@ -15,6 +15,12 @@ do
         "netflix")
           $browser --app="https://netflix.com"
           ;;
+        "outlook")
+          $browser --app="https://outlook.office365.com"
+          ;;
+        "teams")
+          $browser --app="https://teams.microsoft.com"
+          ;;
         "twitch")
           $browser --app="https://twitch.tv/following/live"
           ;;

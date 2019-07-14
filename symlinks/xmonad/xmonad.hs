@@ -40,7 +40,7 @@ myLayoutHook = avoidStruts
                  gap  = 4
                  spc  = spacingRaw True (Border gap gap gap gap) True (Border gap gap gap gap) True
                  inc  = 1/100
-                 asp  = 1920/1080
+                 asp  = 16/9
                  grto = toRational $ 2/(1 + sqrt 5)
                  lDef = named "Main" $ spc $ Tall 1 inc grto
                  lGrd = named "Grid" $ spc $ GV.TallGrid 0 1 (1/2) asp inc
@@ -63,7 +63,7 @@ myKeys =
   , ("M-<Return>",  spawn "~/.xmonad/scripts/choose-term.sh")
   , ("M-o",         spawn "~/.xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
-  , ("M-S-o",       spawn ("item=$(echo 'amazon\ntwitch\nnetflix\nyoutube' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
+  , ("M-S-o",       spawn ("item=$(echo 'amazon\nteams\ntwitch\nnetflix\noutlook\nyoutube' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{
