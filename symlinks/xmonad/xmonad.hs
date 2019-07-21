@@ -7,11 +7,12 @@ import qualified XMonad.Hooks.EwmhDesktops as ED
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Gaps
-import qualified XMonad.Layout.GridVariants as GV
+import XMonad.Layout.Grid
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Named
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Reflect
 import XMonad.Operations
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
@@ -35,18 +36,23 @@ main = do
 myLayoutHook = avoidStruts
              $ smartBorders
              $ gaps [(U,4),(D,4),(L,4),(R,4)]
-             $ mkToggle (FULL ?? EOT) $ lDef ||| lGrd
+             $ mkToggle (FULL ?? EOT)
+             $ mkToggle (single REFLECTX)
+             $ mkToggle (single REFLECTY)
+             $ mkToggle (single MIRROR)
+             $ lMas ||| lGrd ||| lTal
                where
                  gap  = 4
                  spc  = spacingRaw True (Border gap gap gap gap) True (Border gap gap gap gap) True
                  inc  = 1/100
                  asp  = 16/9
                  grto = toRational $ 2/(1 + sqrt 5)
-                 lDef = named "Main" $ spc $ Tall 1 inc grto
-                 lGrd = named "Grid" $ spc $ GV.TallGrid 0 1 (1/2) asp inc
+                 lMas = named "Master" $ spc $ Tall 1 inc grto
+                 lGrd = named "Grid"   $ spc $ GridRatio asp
+                 lTal = named "Tall"   $ spc $ Mirror $ Tall 0 inc grto
 -- }}}
 -- Key Bindings ----------------------------------------------------------- {{{
-dmenuArgs = "-fn 'xft:monospace:pixelsize=11:antialias=true:hinting=true' -nb '#121212' -sb '#3465a4' -nf '#d0d0d0' -sf '#d0d0d0'"
+dmenuArgs = "-fn 'xft:Source Code Pro:pixelsize=14:antialias=true:hinting=true' -nb '#121212' -sb '#3465a4' -nf '#d0d0d0' -sf '#d0d0d0'"
 myKeys =
   [
     -- Launcher
@@ -55,7 +61,11 @@ myKeys =
   , ("M-r",         spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
     -- Windows
   , ("M-q",         kill)
+    -- Layout
   , ("M-f",         sendMessage $ Toggle FULL)
+  , ("M-x",         sendMessage $ Toggle REFLECTX)
+  , ("M-y",         sendMessage $ Toggle REFLECTY)
+  , ("M-m",         sendMessage $ Toggle MIRROR)
     -- Workspaces
   , ("M-<Tab>",     moveTo Next NonEmptyWS)
   , ("M-S-<Tab>",   moveTo Prev NonEmptyWS)
