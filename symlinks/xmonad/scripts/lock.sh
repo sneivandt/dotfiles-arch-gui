@@ -22,6 +22,7 @@ then
     do
       amixer -q sset "$channel" unmute 2>/dev/null
     done
+    unset channel
   fi
 
   # Resume player

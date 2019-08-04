@@ -41,3 +41,4 @@ do
     exit
   fi
 done
+unset browser

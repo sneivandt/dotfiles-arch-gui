@@ -8,3 +8,4 @@ do
     exit
   fi
 done
+unset terminal
