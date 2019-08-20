@@ -1,6 +1,6 @@
 #!/bin/sh
 
-feh --randomize --bg-fill ~/.wallpaper/* &
+~/.xmonad/scripts/wallpaper.sh &
 compton &
 redshift &
 dunst -config ~/.config/dunst/dunstrc &
