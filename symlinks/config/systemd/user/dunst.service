@@ -1,0 +1,13 @@
+[Unit]
+Description=dunst
+
+Wants=xsesision.target
+After=xsesision.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/dunst -config %h/.config/dunst/dunstrc
+
+[Install]
+WantedBy=xsession.target

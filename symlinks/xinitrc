@@ -9,16 +9,21 @@ then
   unset f
 fi
 
+# preferences
+[ -f "$HOME/.Xresources" ] && xrdb ~/.Xresources
+xset s off
+xset -dpms
+xset s noblank
+
+# xsession.target
+if [ "$(ps -p 1 -o comm=)" = "systemd" ] && [ -n "$(command -vp systemctl)" ]
+then
+  systemctl --user import-environment PATH DBUS_SESSION_BUS_ADDRESS
+  systemctl --no-block --user start xsession.target
+fi
+
+# xmonad
 if [ -n "$(command -vp xmonad)" ]
 then
-
-  # X preferences
-  [ -f "$HOME/.Xresources" ] && xrdb ~/.Xresources
-  xset s off
-  xset -dpms
-  xset s noblank
-
-  # xmonad
-  ~/.xmonad/autostart.sh
   xmonad
 fi

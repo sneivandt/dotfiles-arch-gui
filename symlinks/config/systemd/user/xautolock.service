@@ -1,0 +1,14 @@
+[Unit]
+Description=xautolock
+
+Wants=xsesision.target
+After=xsesision.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/xautolock -secure -time 20 -locker %h/.xmonad/scripts/lock.sh
+Restart=always
+
+[Install]
+WantedBy=xsession.target

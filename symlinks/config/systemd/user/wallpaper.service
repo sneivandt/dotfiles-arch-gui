@@ -1,0 +1,14 @@
+[Unit]
+Description=wallpaper
+
+Wants=xsesision.target
+After=xsesision.target
+
+[Service]
+Type=oneshot
+
+ExecStart=%h/.wallpaper/wallpaper.sh
+Restart=no
+
+[Install]
+WantedBy=xsession.target

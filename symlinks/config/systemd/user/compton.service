@@ -1,0 +1,14 @@
+[Unit]
+Description=compton
+
+Wants=xsesision.target
+After=xsesision.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/compton --config %h/.config/compton.conf
+Restart=always
+
+[Install]
+WantedBy=xsession.target

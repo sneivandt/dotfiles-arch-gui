@@ -75,7 +75,7 @@ myKeys =
   , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
   , ("M-S-o",       spawn ("item=$(echo 'amazon\nteams\ntwitch\nnetflix\noutlook\nyoutube' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
     -- Appearance
-  , ("M-w",         spawn "~/.xmonad/scripts/wallpaper.sh")
+  , ("M-w",         spawn "~/.wallpaper/wallpaper.sh")
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{
