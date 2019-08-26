@@ -4,6 +4,8 @@ Description=wallpaper
 Wants=xsesision.target
 After=xsesision.target
 
+ConditionFileIsExecutable=%h/.wallpaper/wallpaper.sh
+
 [Service]
 Type=oneshot
 

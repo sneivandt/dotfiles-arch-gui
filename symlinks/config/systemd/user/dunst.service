@@ -4,6 +4,9 @@ Description=dunst
 Wants=xsesision.target
 After=xsesision.target
 
+ConditionFileIsExecutable=/usr/bin/dunst
+ConditConditionPathExistsionFileNotEmpty=%h/.config/dunst/dunstrc
+
 [Service]
 Type=simple
 

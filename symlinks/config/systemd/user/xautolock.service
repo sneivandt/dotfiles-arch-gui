@@ -4,10 +4,13 @@ Description=xautolock
 Wants=xsesision.target
 After=xsesision.target
 
+ConditionFileIsExecutable=/usr/bin/xautolock
+ConditionPathExists=%h/.config/lock.sh
+
 [Service]
 Type=simple
 
-ExecStart=/usr/bin/xautolock -secure -time 20 -locker %h/.xmonad/scripts/lock.sh
+ExecStart=/usr/bin/xautolock -secure -time 20 -locker %h/.config/lock.sh
 Restart=always
 
 [Install]

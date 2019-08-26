@@ -4,6 +4,9 @@ Description=compton
 Wants=xsesision.target
 After=xsesision.target
 
+ConditionFileIsExecutable=/usr/bin/compton
+ConditionPathExists=%h/.config/compton.conf
+
 [Service]
 Type=simple
 
