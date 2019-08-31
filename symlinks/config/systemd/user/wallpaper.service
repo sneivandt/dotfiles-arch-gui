@@ -1,8 +1,8 @@
 [Unit]
 Description=wallpaper
 
-Wants=xsesision.target
-After=xsesision.target
+Wants=xsession.target
+After=xsession.target
 
 ConditionFileIsExecutable=%h/.wallpaper/wallpaper.sh
 
@@ -10,7 +10,6 @@ ConditionFileIsExecutable=%h/.wallpaper/wallpaper.sh
 Type=oneshot
 
 ExecStart=%h/.wallpaper/wallpaper.sh
-Restart=no
 
 [Install]
 WantedBy=xsession.target
