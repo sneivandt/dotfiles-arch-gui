@@ -5,7 +5,7 @@ Wants=xsession.target
 After=xsession.target
 
 ConditionFileIsExecutable=/usr/bin/dunst
-ConditionPathExistsionFileNotEmpty=%h/.config/dunst/dunstrc
+ConditionPathExists=%h/.config/dunst/dunstrc
 
 [Service]
 Type=simple
