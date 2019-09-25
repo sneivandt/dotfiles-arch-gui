@@ -4,12 +4,12 @@ Description=wallpaper
 Wants=xsession.target
 After=xsession.target
 
-ConditionFileIsExecutable=%h/.wallpaper/wallpaper.sh
+ConditionFileIsExecutable=%h/.config/wallpaper/wallpaper.sh
 
 [Service]
 Type=oneshot
 
-ExecStart=%h/.wallpaper/wallpaper.sh
+ExecStart=%h/.config/wallpaper/wallpaper.sh
 
 [Install]
 WantedBy=xsession.target
