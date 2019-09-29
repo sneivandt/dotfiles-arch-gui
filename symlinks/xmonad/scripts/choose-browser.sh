@@ -22,7 +22,7 @@ do
           $browser --app="https://teams.microsoft.com"
           ;;
         "twitch")
-          $browser --app="https://twitch.tv/following/live"
+          $browser --app="https://twitch.tv/directory/following/live"
           ;;
         "youtube")
           $browser --app="http://youtube.com/feed/subscriptions"
