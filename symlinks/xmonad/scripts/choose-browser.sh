@@ -12,6 +12,9 @@ do
         "amazon")
           $browser --app="https://amazon.com/video"
           ;;
+        "lichess")
+          $browser --app="https://lichess.org"
+          ;;
         "netflix")
           $browser --app="https://netflix.com"
           ;;
