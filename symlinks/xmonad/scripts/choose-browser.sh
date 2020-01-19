@@ -4,6 +4,7 @@ for browser in chromium-dev chromium
 do
   if [ -n "$(command -vp $browser)" ]
   then
+    browser="$browser --enable-features=OverlayScrollbar"
     if [ -z "$1" ]
     then
       $browser
