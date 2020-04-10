@@ -61,11 +61,13 @@ myKeys =
   , ("M-r",         spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
     -- Windows
   , ("M-q",         kill)
+  -- Windows
+  , ("M-<End>",     spawn "~/.config/lock.sh")
     -- Layout
   , ("M-f",         sendMessage $ Toggle FULL)
   , ("M-x",         sendMessage $ Toggle REFLECTX)
   , ("M-y",         sendMessage $ Toggle REFLECTY)
-  , ("M-m",         sendMessage $ Toggle MIRROR)
+  , ("M-z",         sendMessage $ Toggle MIRROR)
     -- Workspaces
   , ("M-<Tab>",     moveTo Next NonEmptyWS)
   , ("M-S-<Tab>",   moveTo Prev NonEmptyWS)
@@ -74,6 +76,8 @@ myKeys =
   , ("M-o",         spawn "~/.xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
   , ("M-S-o",       spawn ("item=$(echo 'amazon\nlichess\nteams\ntwitch\nnetflix\noutlook\nyoutube' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
+    -- Media
+  , ("M-m",         spawn "~/.xmonad/scripts/mute.sh")
     -- Appearance
   , ("M-w",         spawn "~/.config/wallpaper/wallpaper.sh")
   ]
