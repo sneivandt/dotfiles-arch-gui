@@ -6,5 +6,5 @@ then
   case "$metadata" in
     " - "*) metadata=$(echo "$metadata" | cut -c4-)
   esac
-  echo "$1 $metadata"
+  echo "$1 $metadata" | awk -v len=128 '{ if (length($0) > len) print substr($0, 1, len-3) "..."; else print; }'
 fi
