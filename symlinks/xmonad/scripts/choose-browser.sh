@@ -34,6 +34,9 @@ do
         "<iframe "*)
           $browser --app="$(echo "$*" | grep -Po '.* src="\K[^ "'']*')"
           ;;
+        "file://"*)
+          $browser --app="$*"
+          ;;
         "https://"*)
           $browser --app="$*"
           ;;
