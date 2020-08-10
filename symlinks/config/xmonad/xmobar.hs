@@ -31,8 +31,8 @@ Config {
     , commands =
       [ Run Date "<fn=2></fn> %H:%M"                                                        "time"    10
       , Run Date "<fn=2></fn> %a %b %d"                                                     "date"    10
-      , Run Com  "bash" ["-c", "~/.xmonad/scripts/playing.sh '<fn=3></fn>'"]                "playing" 60
-      , Run Com  "bash" ["-c", "~/.xmonad/scripts/volume.sh  '<fn=2></fn>' '<fn=2></fn>'"] "volume"  60
+      , Run Com  "bash" ["-c", "~/.config/xmonad/scripts/playing.sh '<fn=3></fn>'"]                "playing" 60
+      , Run Com  "bash" ["-c", "~/.config/xmonad/scripts/volume.sh  '<fn=2></fn>' '<fn=2></fn>'"] "volume"  60
       , Run StdinReader
       ]
 -- }}}

@@ -72,19 +72,19 @@ myKeys =
   , ("M-<Tab>",     moveTo Next NonEmptyWS)
   , ("M-S-<Tab>",   moveTo Prev NonEmptyWS)
     -- Programs
-  , ("M-<Return>",  spawn "~/.xmonad/scripts/choose-term.sh")
-  , ("M-o",         spawn "~/.xmonad/scripts/choose-browser.sh")
-  , ("M-i",         spawn "~/.xmonad/scripts/choose-editor.sh")
+  , ("M-<Return>",  spawn "~/.config/xmonad/scripts/choose-term.sh")
+  , ("M-o",         spawn "~/.config/xmonad/scripts/choose-browser.sh")
+  , ("M-i",         spawn "~/.config/xmonad/scripts/choose-editor.sh")
   , ("M-S-o",       spawn ("item=$(echo 'amazon\nlichess\nteams\ntwitch\nnetflix\noutlook\nyoutube' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && ~/.xmonad/scripts/choose-browser.sh $item"))
     -- Media
-  , ("M-m",         spawn "~/.xmonad/scripts/mute.sh")
+  , ("M-m",         spawn "~/.config/xmonad/scripts/mute.sh")
     -- Appearance
   , ("M-w",         spawn "~/.config/wallpaper/wallpaper.sh")
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{
 myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
-myWsBar     = "xmobar ~/.xmonad/xmobar.hs"
+myWsBar     = "xmobar ~/.config/xmonad/xmobar.hs"
 wsPP        = xmobarPP
               { ppOrder   = \(ws:l:t:r) -> ws:l:t:r
               , ppTitle   = \t -> shorten 64 t
