@@ -2,9 +2,9 @@
 
 if [ -f ~/.cache/wallpaper ]
 then
-  feh --bg-fill --no-fehbg ~/.cache/wallpaper
+  feh --bg-fill --no-fehbg "$XDG_CACHE_HOME"/wallpaper
 else
-  feh --bg-fill --no-fehbg ~/.config/wallpaper/default.png
+  feh --bg-fill --no-fehbg "$XDG_CONFIG_HOME"/wallpaper/default.png
 fi
 
 tmpfile="$(mktemp)"
