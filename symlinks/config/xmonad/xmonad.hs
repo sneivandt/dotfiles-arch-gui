@@ -69,8 +69,8 @@ myKeys =
   , ("M-y",         sendMessage $ Toggle REFLECTY)
   , ("M-z",         sendMessage $ Toggle MIRROR)
     -- Workspaces
-  , ("M-<Tab>",     moveTo Next NonEmptyWS)
-  , ("M-S-<Tab>",   moveTo Prev NonEmptyWS)
+  , ("M-<Tab>",     moveTo Next (Not emptyWS))
+  , ("M-S-<Tab>",   moveTo Prev (Not emptyWS))
     -- Programs
   , ("M-<Return>",  spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-term.sh")
   , ("M-o",         spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-browser.sh")
