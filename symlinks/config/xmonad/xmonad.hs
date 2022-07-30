@@ -21,16 +21,19 @@ import XMonad.Util.Run
 -- Main ------------------------------------------------------------------- {{{
 main = do
   wsBar <- spawnPipe myWsBar
-  xmonad $ desktopConfig
-    { modMask            = mod4Mask
-    , borderWidth        = 2
-    , normalBorderColor  = "#263238"
-    , focusedBorderColor = "#607d8b"
-    , layoutHook         = myLayoutHook
-    , manageHook         = fullscreenManageHook <+> manageDocks
-    , handleEventHook    = fullscreenEventHook <+> docksEventHook <+> ED.fullscreenEventHook
-    , logHook            = myLogHook wsBar
-    } `additionalKeysP` myKeys
+  xmonad
+    $ ED.ewmhFullscreen
+    $ docks
+    $ desktopConfig
+      { modMask            = mod4Mask
+      , borderWidth        = 2
+      , normalBorderColor  = "#263238"
+      , focusedBorderColor = "#607d8b"
+      , layoutHook         = myLayoutHook
+      , manageHook         = fullscreenManageHook <+> manageDocks
+      , handleEventHook    = fullscreenEventHook
+      , logHook            = myLogHook wsBar
+      } `additionalKeysP` myKeys
 -- }}}
 -- Layout ----------------------------------------------------------------- {{{
 myLayoutHook = avoidStruts
