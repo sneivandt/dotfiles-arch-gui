@@ -6,7 +6,6 @@ import XMonad.Hooks.DynamicLog
 import qualified XMonad.Hooks.EwmhDesktops as ED
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
-import XMonad.Layout.Gaps
 import XMonad.Layout.Grid
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
@@ -38,11 +37,11 @@ main = do
 -- Layout ----------------------------------------------------------------- {{{
 myLayoutHook = avoidStruts
              $ smartBorders
-             $ gaps [(U,4),(D,4),(L,4),(R,4)]
              $ mkToggle (FULL ?? EOT)
              $ mkToggle (single REFLECTX)
              $ mkToggle (single REFLECTY)
              $ mkToggle (single MIRROR)
+             $ mkToggle (single NOBORDERS)
              $ lMas ||| lGrd ||| lTal
                where
                  gap  = 4
@@ -71,6 +70,10 @@ myKeys =
   , ("M-x",         sendMessage $ Toggle REFLECTX)
   , ("M-y",         sendMessage $ Toggle REFLECTY)
   , ("M-z",         sendMessage $ Toggle MIRROR)
+  , ("M-g",         sendMessage ToggleStruts
+                      >> sendMessage (Toggle NOBORDERS)
+                      >> toggleWindowSpacingEnabled
+                      >> toggleScreenSpacingEnabled)
     -- Workspaces
   , ("M-<Tab>",     moveTo Next (Not emptyWS))
   , ("M-S-<Tab>",   moveTo Prev (Not emptyWS))
