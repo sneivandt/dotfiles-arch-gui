@@ -70,10 +70,6 @@ myKeys =
   , ("M-x",         sendMessage $ Toggle REFLECTX)
   , ("M-y",         sendMessage $ Toggle REFLECTY)
   , ("M-z",         sendMessage $ Toggle MIRROR)
-  , ("M-g",         sendMessage ToggleStruts
-                      >> sendMessage (Toggle NOBORDERS)
-                      >> toggleWindowSpacingEnabled
-                      >> toggleScreenSpacingEnabled)
     -- Workspaces
   , ("M-<Tab>",     moveTo Next (Not emptyWS))
   , ("M-S-<Tab>",   moveTo Prev (Not emptyWS))
