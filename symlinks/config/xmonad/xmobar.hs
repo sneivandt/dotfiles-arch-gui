@@ -1,13 +1,13 @@
 Config {
 -- Apearance -------------------------------------------------------------- {{{
-      font            = "xft:Source Code Pro:pixelsize=11:antialias=true:hinting=true\
-                        \,Font Awesome 5 Free Solid:pixelsize=11:antialias=true:hinting=true\
-                        \,Noto Sans CJK CH:pixelsize=11:antialias=true:hinting=true\
-                        \,Noto Sans CJK JP:pixelsize=11:antialias=true:hinting=true\
-                        \,Noto Sans CJK KR:pixelsize=11:antialias=true:hinting=true"
-    , additionalFonts = [ "xft:Font Awesome 5 Free:pixelsize=11:antialias=true:hinting=true"
-                        , "xft:Font Awesome 5 Free Solid:pixelsize=11:antialias=true:hinting=true"
-                        , "xft:Font Awesome 5 Brands:pixelsize=11:antialias=true:hinting=true"
+      font            = "xft:pixelsize=14:antialias=true:hinting=true:Source Code Pro\
+                        \,Font Awesome 5 Free Solid\
+                        \,Noto Sans CJK CH\
+                        \,Noto Sans CJK JP\
+                        \,Noto Sans CJK KR"
+    , additionalFonts = [ "Font Awesome 5 Free"
+                        , "Font Awesome 5 Free Solid"
+                        , "Font Awesome 5 Brands"
                         ]
     , bgColor         = "#121212"
     , fgColor         = "#d0d0d0"
