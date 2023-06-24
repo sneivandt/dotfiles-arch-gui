@@ -13,6 +13,9 @@ do
         "amazon")
           $browser --app="https://amazon.com/video"
           ;;
+        "chatgpt")
+          $browser --app="https://chat.openai.com"
+          ;;
         "lichess")
           $browser --app="https://lichess.org"
           ;;
@@ -20,7 +23,7 @@ do
           $browser --app="https://netflix.com"
           ;;
         "outlook")
-          $browser --app="https://outlook.office365.com"
+          $browser --app="https://outlook.live.com"
           ;;
         "teams")
           $browser --app="https://teams.microsoft.com"
