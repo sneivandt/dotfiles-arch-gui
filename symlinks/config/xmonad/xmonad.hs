@@ -3,17 +3,16 @@ import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
-import qualified XMonad.Hooks.EwmhDesktops as ED
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
-import XMonad.Layout.Named
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Reflect
-import XMonad.Operations
+import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
+import XMonad.Operations
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 -- }}}
@@ -21,7 +20,7 @@ import XMonad.Util.Run
 main = do
   wsBar <- spawnPipe myWsBar
   xmonad
-    $ ED.ewmhFullscreen
+    $ fullscreenSupport
     $ docks
     $ desktopConfig
       { modMask            = mod4Mask
@@ -37,6 +36,7 @@ main = do
 -- Layout ----------------------------------------------------------------- {{{
 myLayoutHook = avoidStruts
              $ smartBorders
+             $ fullscreenFull
              $ mkToggle (FULL ?? EOT)
              $ mkToggle (single REFLECTX)
              $ mkToggle (single REFLECTY)
