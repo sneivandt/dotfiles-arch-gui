@@ -9,9 +9,8 @@ Config {
                         , "Font Awesome 5 Free Solid"
                         , "Font Awesome 5 Brands"
                         ]
-    , bgColor         = "#121212"
+    , bgColor         = "#000000"
     , fgColor         = "#d0d0d0"
-    , alpha           = 200
     , position        = Top
 -- }}}
 -- Layout ----------------------------------------------------------------- {{{
@@ -29,8 +28,8 @@ Config {
 -- }}}
 -- Commands --------------------------------------------------------------- {{{
     , commands =
-      [ Run Date "<fn=2></fn> %H:%M"                                                        "time"    10
-      , Run Date "<fn=2></fn> %a %b %d"                                                     "date"    10
+      [ Run Date "<fn=2></fn> %H:%M"                                                                      "time"    10
+      , Run Date "<fn=2></fn> %a %b %d"                                                                   "date"    10
       , Run Com  "bash" ["-c", "$XDG_CONFIG_HOME/xmonad/scripts/playing.sh '<fn=3></fn>'"]                "playing" 60
       , Run Com  "bash" ["-c", "$XDG_CONFIG_HOME/xmonad/scripts/volume.sh  '<fn=2></fn>' '<fn=2></fn>'"] "volume"  60
       , Run StdinReader
