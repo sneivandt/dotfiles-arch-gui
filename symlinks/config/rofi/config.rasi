@@ -1,81 +1,58 @@
 configuration {
-  display-drun: "Applications:";
-  display-window: "Windows:";
-  drun-display-format: "{icon} {name}";
-  font: "Source Code Pro 12";
-  modi: "window,run,drun";
+  modi: "drun,run,window";
   show-icons: true;
   icon-theme: "Papirus";
+  font: "Source Code Pro 12";
+  display-drun: "Apps";
+  display-run: "Run";
+  display-window: "Window";
 }
 
 @theme "/dev/null"
 
 * {
-  bg: #121212;
-  bg-alt: #1a1a1a;
-  fg: #d0d0d0;
-  fg-alt: #61afef;
-  
-  background-color: @bg;
-  text-color: @fg;
-  border: 0;
-  margin: 0;
-  padding: 0;
+  background-color: #121212;
+  text-color: #d0d0d0;
   spacing: 0;
+  width: 512px;
 }
 
 window {
-  width: 45%;
-  border: 2px;
-  border-color: @fg-alt;
-}
-
-element {
-  padding: 12;
-  text-color: @fg;
-}
-
-element selected {
-  text-color: @fg-alt;
-  background-color: @bg-alt;
-}
-
-element-text {
-  background-color: inherit;
-  text-color: inherit;
-  vertical-align: 0.5;
-}
-
-element-icon {
-  size: 30;
-  padding: 0 10 0 0;
-  background-color: inherit;
-}
-
-entry {
-  background-color: @bg-alt;
-  padding: 12;
-  text-color: @fg;
+  border: 0;
+  padding: 10px;
 }
 
 inputbar {
-  children: [prompt, entry];
+  children: [entry];
+  padding: 10px;
+  background-color: #1a1a1a;
+}
+
+entry {
+  background-color: inherit;
+  placeholder: "";
 }
 
 listview {
-  background-color: @bg;
-  columns: 1;
-  lines: 8;
+  lines: 10;
+  padding: 10px 0 0 0;
 }
 
-mainbox {
-  background-color: @bg;
-  children: [inputbar, listview];
+element {
+  padding: 8px;
 }
 
-prompt {
-  background-color: @bg-alt;
-  enabled: true;
-  padding: 12 0 0 12;
-  text-color: @fg;
+element selected {
+  background-color: #1a1a1a;
+  text-color: #61afef;
+}
+
+element-text, element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element-icon {
+  size: 24px;
+  padding: 0 10px 0 0;
 }

@@ -10,28 +10,19 @@ do
       $browser
     else
       case $(echo "$@" | tr '[:upper:]' '[:lower:]') in
-        "amazon")
+        "Prime Video")
           $browser --app="https://amazon.com/video"
           ;;
-        "chatgpt")
+        "ChatGPT")
           $browser --app="https://chat.openai.com"
           ;;
-        "lichess")
+        "Lichess")
           $browser --app="https://lichess.org"
           ;;
-        "netflix")
+        "Netflix")
           $browser --app="https://netflix.com"
           ;;
-        "outlook")
-          $browser --app="https://outlook.live.com"
-          ;;
-        "teams")
-          $browser --app="https://teams.microsoft.com"
-          ;;
-        "twitch")
-          $browser --app="https://twitch.tv/directory/following/live"
-          ;;
-        "youtube")
+        "YouTube")
           $browser --app="http://youtube.com/feed/subscriptions"
           ;;
         "<iframe "*)

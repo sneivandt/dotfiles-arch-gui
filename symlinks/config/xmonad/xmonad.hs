@@ -89,7 +89,7 @@ myKeys =
   , ("M-<Return>",  spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-term.sh")
   , ("M-o",         spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-editor.sh")
-  , ("M-S-o",       spawn ("item=$(echo 'amazon\nchatgpt\nlichess\nteams\ntwitch\nnetflix\noutlook\nyoutube' | rofi -dmenu -p 'Chromium App') && $XDG_CONFIG_HOME/xmonad/scripts/choose-browser.sh $item"))
+  , ("M-S-o",       spawn ("item=$(echo 'Prime Video\\nChatGPT\\nLichess\\nNetflix\\nYouTube' | rofi -dmenu -no-show-icons -p 'Chromium App') && $XDG_CONFIG_HOME/xmonad/scripts/choose-browser.sh $item"))
     -- Media
   , ("M-m",         spawn "$XDG_CONFIG_HOME/xmonad/scripts/mute.sh")
     -- Appearance
