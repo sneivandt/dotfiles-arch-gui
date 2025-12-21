@@ -69,13 +69,14 @@ dmenuArgs = "-fn '" ++ myDmenuFont ++ "' -nb '" ++ myDmenuNormBG ++ "' -sb '" ++
 myKeys =
   [
     -- Launcher
-    ("M-p",         spawn ("item=$(ls /usr/share/applications | awk -F '.desktop' '{print $1}' | dmenu -i -p Run " ++ dmenuArgs ++ ") && gtk-launch $item.desktop"))
+    ("M-p",         spawn "rofi -show drun")
     -- Xmonad
   , ("M-r",         spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
     -- Windows
   , ("M-q",         kill)
   -- Windows
   , ("M-<End>",     spawn "$XDG_CONFIG_HOME/lock.sh")
+  , ("M-S-s",       spawn "flameshot gui")
     -- Layout
   , ("M-f",         sendMessage $ Toggle FULL)
   , ("M-x",         sendMessage $ Toggle REFLECTX)
@@ -88,7 +89,7 @@ myKeys =
   , ("M-<Return>",  spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-term.sh")
   , ("M-o",         spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-browser.sh")
   , ("M-i",         spawn "$XDG_CONFIG_HOME/xmonad/scripts/choose-editor.sh")
-  , ("M-S-o",       spawn ("item=$(echo 'amazon\nchatgpt\nlichess\nteams\ntwitch\nnetflix\noutlook\nyoutube' | dmenu -i -p 'Chroium App' " ++ dmenuArgs ++ ") && $XDG_CONFIG_HOME/xmonad/scripts/choose-browser.sh $item"))
+  , ("M-S-o",       spawn ("item=$(echo 'amazon\nchatgpt\nlichess\nteams\ntwitch\nnetflix\noutlook\nyoutube' | rofi -dmenu -p 'Chromium App') && $XDG_CONFIG_HOME/xmonad/scripts/choose-browser.sh $item"))
     -- Media
   , ("M-m",         spawn "$XDG_CONFIG_HOME/xmonad/scripts/mute.sh")
     -- Appearance

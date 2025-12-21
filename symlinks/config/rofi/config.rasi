@@ -1,0 +1,81 @@
+configuration {
+  display-drun: "Applications:";
+  display-window: "Windows:";
+  drun-display-format: "{icon} {name}";
+  font: "Source Code Pro 12";
+  modi: "window,run,drun";
+  show-icons: true;
+  icon-theme: "Papirus";
+}
+
+@theme "/dev/null"
+
+* {
+  bg: #121212;
+  bg-alt: #1a1a1a;
+  fg: #d0d0d0;
+  fg-alt: #61afef;
+  
+  background-color: @bg;
+  text-color: @fg;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  width: 45%;
+  border: 2px;
+  border-color: @fg-alt;
+}
+
+element {
+  padding: 12;
+  text-color: @fg;
+}
+
+element selected {
+  text-color: @fg-alt;
+  background-color: @bg-alt;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 30;
+  padding: 0 10 0 0;
+  background-color: inherit;
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 12;
+  text-color: @fg;
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  background-color: @bg;
+  columns: 1;
+  lines: 8;
+}
+
+mainbox {
+  background-color: @bg;
+  children: [inputbar, listview];
+}
+
+prompt {
+  background-color: @bg-alt;
+  enabled: true;
+  padding: 12 0 0 12;
+  text-color: @fg;
+}
