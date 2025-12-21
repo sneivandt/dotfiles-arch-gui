@@ -24,9 +24,9 @@ main = do
     $ docks
     $ desktopConfig
       { modMask            = mod4Mask
-      , borderWidth        = 2
-      , normalBorderColor  = "#263238"
-      , focusedBorderColor = "#607d8b"
+      , borderWidth        = 3
+      , normalBorderColor  = "#1a1a1a"
+      , focusedBorderColor = "#61afef"
       , layoutHook         = myLayoutHook
       , manageHook         = fullscreenManageHook <+> manageDocks
       , handleEventHook    = fullscreenEventHook
@@ -89,10 +89,10 @@ myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
 myWsBar     = "xmobar $XDG_CONFIG_HOME/xmonad/xmobar.hs"
 wsPP        = xmobarPP
               { ppOrder   = \(ws:l:t:r) -> ws:l:t:r
-              , ppTitle   = \t -> shorten 64 t
-              , ppCurrent = \_ -> "<fn=0>\xf111</fn>"
-              , ppHidden  = \_ -> "<fn=1>\xf111</fn>"
-              , ppSep     = xmobarColor "#283436" "" " \xf105 "
+              , ppTitle   = shorten 64
+              , ppCurrent = \_ -> wrap "<fn=2>" "</fn>" "\xf111"
+              , ppHidden  = \_ -> wrap "<fn=1>" "</fn>" "\xf111"
+              , ppSep     = " \xf105 "
               , ppWsSep   = " "
               }
 -- }}}

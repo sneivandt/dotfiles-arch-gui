@@ -9,9 +9,10 @@ Config {
                         , "Font Awesome 5 Free Solid"
                         , "Font Awesome 5 Brands"
                         ]
-    , bgColor         = "#000000"
+    , bgColor         = "#121212"
     , fgColor         = "#d0d0d0"
-    , position        = Top
+    , alpha           = 240
+    , position        = TopH 26
 -- }}}
 -- Layout ----------------------------------------------------------------- {{{
     , sepChar  = "%"
