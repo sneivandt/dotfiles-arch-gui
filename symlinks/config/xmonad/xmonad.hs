@@ -16,6 +16,17 @@ import XMonad.Operations
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 -- }}}
+-- Theme ------------------------------------------------------------------ {{{
+myBorderWidth        = 3
+myNormalBorderColor  = "#1a1a1a"
+myFocusedBorderColor = "#61afef"
+
+myDmenuFont          = "xft:Source Code Pro:pixelsize=14:antialias=true:hinting=true"
+myDmenuNormBG        = "#121212"
+myDmenuSelBG         = "#3465a4"
+myDmenuNormFG        = "#d0d0d0"
+myDmenuSelFG         = "#d0d0d0"
+-- }}}
 -- Main ------------------------------------------------------------------- {{{
 main = do
   wsBar <- spawnPipe myWsBar
@@ -24,9 +35,9 @@ main = do
     $ docks
     $ desktopConfig
       { modMask            = mod4Mask
-      , borderWidth        = 3
-      , normalBorderColor  = "#1a1a1a"
-      , focusedBorderColor = "#61afef"
+      , borderWidth        = myBorderWidth
+      , normalBorderColor  = myNormalBorderColor
+      , focusedBorderColor = myFocusedBorderColor
       , layoutHook         = myLayoutHook
       , manageHook         = fullscreenManageHook <+> manageDocks
       , handleEventHook    = fullscreenEventHook
@@ -54,7 +65,7 @@ myLayoutHook = avoidStruts
                  lTal = named "Tall"   $ spc $ Mirror $ Tall 0 inc grto
 -- }}}
 -- Key Bindings ----------------------------------------------------------- {{{
-dmenuArgs = "-fn 'xft:Source Code Pro:pixelsize=14:antialias=true:hinting=true' -nb '#121212' -sb '#3465a4' -nf '#d0d0d0' -sf '#d0d0d0'"
+dmenuArgs = "-fn '" ++ myDmenuFont ++ "' -nb '" ++ myDmenuNormBG ++ "' -sb '" ++ myDmenuSelBG ++ "' -nf '" ++ myDmenuNormFG ++ "' -sf '" ++ myDmenuSelFG ++ "'"
 myKeys =
   [
     -- Launcher

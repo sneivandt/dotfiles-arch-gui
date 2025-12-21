@@ -10,7 +10,10 @@
     frame_width          = 2
     frame_color          = "#61afef"
     separator_color      = frame
-    geometry             = "300x5-30+50"
+    width                = 300
+    height               = 300
+    origin               = top-right
+    offset               = 30x50
     transparency         = 10
     idle_threshold       = 120
     monitor              = 0
