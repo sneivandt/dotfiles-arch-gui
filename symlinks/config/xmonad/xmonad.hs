@@ -15,6 +15,9 @@ import XMonad.Layout.Spacing
 import XMonad.Operations
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
+import qualified XMonad.StackSet as W
+import Graphics.X11.Xlib.Extras
+import Foreign.C.Types (CLong)
 -- }}}
 -- Theme ------------------------------------------------------------------ {{{
 myBorderWidth        = 3
@@ -97,7 +100,7 @@ myKeys =
   ]
 -- }}}
 -- Xmobar ----------------------------------------------------------------- {{{
-myLogHook h = dynamicLogWithPP $ wsPP { ppOutput = hPutStrLn h }
+myLogHook h = dynamicLogWithPP (wsPP { ppOutput = hPutStrLn h }) >> atomHook
 myWsBar     = "xmobar $XDG_CONFIG_HOME/xmonad/xmobar.hs"
 wsPP        = xmobarPP
               { ppOrder   = \(ws:l:t:r) -> ws:l:t:r
@@ -107,4 +110,16 @@ wsPP        = xmobarPP
               , ppSep     = " \xf105 "
               , ppWsSep   = " "
               }
+-- }}}
+-- Atom Hook -------------------------------------------------------------- {{{
+atomHook :: X ()
+atomHook = do
+  ws <- gets windowset
+  let wins = W.index ws
+  withDisplay $ \dpy -> do
+    atom <- getAtom "_NET_WM_STATE_SINGLE"
+    card <- getAtom "CARDINAL"
+    case wins of
+      [w] -> io $ changeProperty32 dpy w atom card 0 [1]
+      _   -> mapM_ (\w -> io $ deleteProperty dpy w atom) wins
 -- }}}
