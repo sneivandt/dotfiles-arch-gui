@@ -14,8 +14,11 @@ import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
 import XMonad.Operations
 import XMonad.Util.EZConfig
+import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run
 import qualified XMonad.StackSet as W
+import qualified Data.Map as M
+import Control.Monad (when)
 import Graphics.X11.Xlib.Extras
 import Foreign.C.Types (CLong)
 -- }}}
@@ -42,7 +45,7 @@ main = do
       , normalBorderColor  = myNormalBorderColor
       , focusedBorderColor = myFocusedBorderColor
       , layoutHook         = myLayoutHook
-      , manageHook         = fullscreenManageHook <+> manageDocks
+      , manageHook         = namedScratchpadManageHook scratchpads <+> fullscreenManageHook <+> manageDocks
       , handleEventHook    = fullscreenEventHook
       , logHook            = myLogHook wsBar
       } `additionalKeysP` myKeys
@@ -63,9 +66,21 @@ myLayoutHook = avoidStruts
                  inc  = 1/100
                  asp  = 16/9
                  grto = toRational $ 2/(1 + sqrt 5)
-                 lMas = named "Master" $ spc $ Tall 1 inc grto
-                 lGrd = named "Grid"   $ spc $ GridRatio asp
-                 lTal = named "Tall"   $ spc $ Mirror $ Tall 0 inc grto
+                 lMas = named "Master"   $ spc $ Tall 1 inc grto
+                 lGrd = named "Grid"     $ spc $ GridRatio asp
+                 lTal = named "Tall"     $ spc $ Mirror $ Tall 0 inc grto
+-- }}}
+-- Scratchpads ------------------------------------------------------------ {{{
+scratchpads = [ NS "terminal" spawnTerm findTerm manageTerm ]
+  where
+    spawnTerm  = "$XDG_CONFIG_HOME/xmonad/scripts/choose-term.sh --class scratchpad"
+    findTerm   = resource =? "scratchpad"
+    manageTerm = customFloating $ W.RationalRect l t w h
+      where
+        h = 0.9
+        w = 0.9
+        t = 0.95 - h
+        l = 0.95 - w
 -- }}}
 -- Key Bindings ----------------------------------------------------------- {{{
 dmenuArgs = "-fn '" ++ myDmenuFont ++ "' -nb '" ++ myDmenuNormBG ++ "' -sb '" ++ myDmenuSelBG ++ "' -nf '" ++ myDmenuNormFG ++ "' -sf '" ++ myDmenuSelFG ++ "'"
@@ -77,6 +92,7 @@ myKeys =
   , ("M-r",         spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
     -- Windows
   , ("M-q",         kill)
+  , ("M-s",         namedScratchpadAction scratchpads "terminal")
   -- Windows
   , ("M-<End>",     spawn "$XDG_CONFIG_HOME/lock.sh")
   , ("M-S-s",       spawn "flameshot gui")
@@ -115,11 +131,15 @@ wsPP        = xmobarPP
 atomHook :: X ()
 atomHook = do
   ws <- gets windowset
-  let wins = W.index ws
+  let allWins = W.index ws
+      floats  = W.floating ws
+      tiledWins = filter (`M.notMember` floats) allWins
   withDisplay $ \dpy -> do
     atom <- getAtom "_NET_WM_STATE_SINGLE"
     card <- getAtom "CARDINAL"
-    case wins of
-      [w] -> io $ changeProperty32 dpy w atom card 0 [1]
-      _   -> mapM_ (\w -> io $ deleteProperty dpy w atom) wins
+    case tiledWins of
+      [w] -> do
+        io $ changeProperty32 dpy w atom card 0 [1]
+        mapM_ (\o -> when (o /= w) $ io $ deleteProperty dpy o atom) allWins
+      _   -> mapM_ (\w -> io $ deleteProperty dpy w atom) allWins
 -- }}}
