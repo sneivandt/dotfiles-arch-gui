@@ -3,6 +3,7 @@
 *foreground:  #d0d0d0
 *scrollBar:   false
 *toolBar:     false
+Xft.dpi:      96
 
 *color0:  #2E3436
 *color1:  #a40000
@@ -22,6 +23,7 @@
 *color15: #EEEEEC
 
 xterm*termName:            xterm-256color
+xterm*renderFont:          true
 xterm*locale:              true
 xterm*metaSendsEscape:     true
 xterm*VT100.geometry:      80x25

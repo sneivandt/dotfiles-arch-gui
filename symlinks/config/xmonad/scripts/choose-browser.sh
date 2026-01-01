@@ -1,11 +1,13 @@
 #!/bin/sh
+set -o errexit
+set -o nounset
 
 for browser in chromium-dev chromium
 do
-  if [ -n "$(command -vp $browser)" ]
+  if command -v "$browser" >/dev/null 2>&1
   then
     browser="$browser --enable-features=OverlayScrollbar"
-    if [ -z "$1" ]
+    if [ -z "${1:-}" ]
     then
       $browser
     else

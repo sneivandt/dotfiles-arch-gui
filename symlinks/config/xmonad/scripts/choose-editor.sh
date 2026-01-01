@@ -1,8 +1,10 @@
 #!/bin/sh
+set -o errexit
+set -o nounset
 
 for editor in code-insiders code gvim
 do
-  if [ -n "$(command -vp $editor)" ]
+  if command -v "$editor" >/dev/null 2>&1
   then
     $editor
     exit

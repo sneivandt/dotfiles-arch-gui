@@ -6,6 +6,7 @@ configuration {
   display-drun: "Apps";
   display-run: "Run";
   display-window: "Window";
+  drun-display-format: "{icon} {name}";
 }
 
 @theme "/dev/null"

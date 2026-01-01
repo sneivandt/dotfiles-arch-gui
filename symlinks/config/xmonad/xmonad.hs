@@ -3,6 +3,7 @@ import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops hiding (fullscreenEventHook)
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid
@@ -37,6 +38,7 @@ myDmenuSelFG         = "#d0d0d0"
 main = do
   wsBar <- spawnPipe myWsBar
   xmonad
+    $ ewmh
     $ fullscreenSupport
     $ docks
     $ desktopConfig

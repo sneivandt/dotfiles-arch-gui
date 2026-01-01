@@ -1,15 +1,17 @@
 #!/bin/sh
+set -o errexit
+set -o nounset
 
-if [ -n "$(command -vp playerctl)" ] && [ -n "$(command -vp amixer)" ]
+if command -v playerctl >/dev/null 2>&1 && command -v amixer >/dev/null 2>&1
 then
 
   # Pause player
-  STATUS=$(playerctl status 2>/dev/null)
-  playerctl pause 2>/dev/null
+  STATUS=$(playerctl status 2>/dev/null || true)
+  playerctl pause 2>/dev/null || true
 
   # Mute
-  SOUND=$(amixer sget Master | grep -E -o "\[on\]" | head -n 1)
-  amixer -q sset Master mute 2>/dev/null
+  SOUND=$(amixer sget Master | grep -E -o "\[on\]" | head -n 1 || true)
+  amixer -q sset Master mute 2>/dev/null || true
 
   # Lock and wait
   slock
@@ -20,7 +22,7 @@ then
   then
     for channel in $(amixer scontrols | awk -F "'" '{print $2}')
     do
-      amixer -q sset "$channel" unmute 2>/dev/null
+      amixer -q sset "$channel" unmute 2>/dev/null || true
     done
     unset channel
   fi
@@ -28,16 +30,16 @@ then
   # Resume player
   if [ "$STATUS" = "Playing" ]
   then
-    playerctl play 2>/dev/null
+    playerctl play 2>/dev/null || true
   fi
 
-elif [ -n "$(command -vp slock)" ]
+elif command -v slock >/dev/null 2>&1
 then
 
   # Fallback 1
   slock
 
-elif [ -n "$(command -vp xsecurelock)" ]
+elif command -v xsecurelock >/dev/null 2>&1
 then
 
   # Fallback 2
